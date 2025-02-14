@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS 1
+#define _CRT_SECURE_NO_WARNINGS 1
 
 #include <windows.h>
 #include <iostream>
@@ -10,7 +10,6 @@
 #include "starfish.h"
 #include <conio.h>
 #include <time.h>
-//#pragma comment(lib, "starfish.lib")
 
  
 
@@ -79,15 +78,14 @@ Initialize1r initialize1r;
 
 bool game()
 {
-	//按照时间设定随机数种子
-	srand((unsigned)time(NULL));
-	//第一步，生成随机数字，范围在1--100之间
-	int ret = rand() % 100 + 1;//生成随机数，赋值给ret
-	//printf("随机数为%d\n", ret);//测试输出是否正常
 
-	//第二步，猜数字
-	int guess = 0;//记录猜的值
-	int times = 0;//记录猜的次数
+	srand((unsigned)time(NULL));
+
+	int ret = rand() % 100 + 1;
+
+
+	int guess = 0;
+	int times = 0;
 	while (1)
 	{	
 		
@@ -123,9 +121,9 @@ void play_guess()
 		if (a == 1)
 		{
 			if (game()) {
-				//printf("恭喜你，猜对了！\n");
+
 				printf("Congratulations, you are right!\n");
-				//printf("那么，来玩风子的第二个游戏吧！\n");
+
 				printf("Then, let's play Fuko's second game!\n");
 				Sleep(2000);
 				system("cls");
@@ -147,37 +145,28 @@ void play_guess()
 
 int main() {
 
-    HMODULE hModule = LoadLibrary(L"starfish.dll"); // 用正确的 DLL 名称替换   
+    HMODULE hModule = LoadLibrary(L"starfish.dll");   
     if (hModule == NULL) {
         DWORD error = GetLastError();
         std::cerr << "Failed to load the DLL. Error code: " << error << "\n";
         return 1;
     }
-	//你好CTFer，我是伊吹风子，想要获得我的海星，你需要完成我的三个游戏！让我们开始吧 :)
-	//printf("你好 ctfer\n");
 
 	printf("\nhello ctfer\n");
 
-	//printf("我是伊吹风子!\n");
 	printf("I am Ibuki Fuko!\n");
 
-	//printf("想要获得我的海星\n");
 	printf("If you want to get my starfish\n");
 
-	//printf("你需要完成我的三个游戏!\n");
 	printf("You need to complete my three games!\n");
 
-	//printf("准备好了吗?\n");
 	printf("Are you ready?\n");
 
-	//printf("让我们开始吧!\n");
 	printf("Let's start!\n");
 	Sleep(2000);
 	system("cls");
 	play_guess();
-	//printf("再见喽\n");
 	printf("Goodbye\n");
-	//play_snake();
 
     
     FreeLibrary(hModule);
