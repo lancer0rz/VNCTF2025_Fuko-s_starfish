@@ -1,4 +1,4 @@
-﻿#define STARFISH_EXPORTS
+#define STARFISH_EXPORTS
 
 #include "pch.h"  
 #include "starfish.h"
@@ -808,15 +808,12 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	case DLL_PROCESS_ATTACH:// 当进程加载此 DLL 时调用
     {
 
-        // 在此处创建线程，以确保调用 TLS 回调  
-        //print_console("DllMain() DLL_PROCESS_ATTACH start\n");
-
         DWORD ThreadID;
-        // 触发 TLS 回调，通过创建线程来保证它被调用  
+
         HANDLE hThread = CreateThread(NULL, 0, ThreadProc, 0, 0, &ThreadID);
 		//参数：安全属性，堆栈大小，线程函数，传递给线程函数的参数，标志，线程 ID
         if (hThread) {
-			//printf("少女祈祷中...\n");
+
             printf("loading...\n");
             WaitForSingleObject(hThread, 2 * 1000); // 等待线程执行  
             printf("Done.\n");
